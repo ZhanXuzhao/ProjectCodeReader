@@ -1,5 +1,4 @@
-from util.FileUtil import *
+from util.FileUtil import getFileLinesCount
 
-srcName = "index"
-matches = isFileTypeMatches(srcName, [".xml", ".java", ".kt"])
-print(matches)
+count = getFileLinesCount("../code.txt")
+print("code lines:", count)

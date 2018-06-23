@@ -17,12 +17,6 @@ def clearFile(filePath):
         file.writelines("")
 
 
-def printFile(filePath):
-    with open(filePath, encoding="utf-8") as f:
-        for line in f:
-            print(line)
-
-
 def isFileTypeMatches(fileName, types):
     for type in types:
         if (fileName.endswith(type)):
@@ -30,10 +24,14 @@ def isFileTypeMatches(fileName, types):
     return False
 
 
+def getFileLinesCount(filePath):
+    with open(filePath, mode="rb") as file:
+        return len(file.readlines())
+
+
 def readFilesInDirToOneFile(srcDir, dstFilePath, filterTypes):
     names = os.listdir(srcDir)
-    # create file if need
-    if (not os.path.isfile(dstFilePath)):
+    if not os.path.isfile(dstFilePath):
         os.makedirs(dstFilePath)
     for name in names:
         srcName = os.path.join(srcDir, name)

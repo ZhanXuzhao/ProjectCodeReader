@@ -14,3 +14,6 @@ filterTypes = json.loads(configDefault['filterTypes'])
 clearFile(dstFilePath)
 for srcDirPath in srcDirPaths:
     readFilesInDirToOneFile(srcDirPath, dstFilePath, filterTypes)
+
+count = getFileLinesCount(dstFilePath)
+print("\n", "Code lines:", count)
