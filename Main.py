@@ -1,14 +1,16 @@
 from util.FileUtil import *
 import configparser
+import json
 
 # read config
 config = configparser.ConfigParser()
 config.read("config.txt")
 configDefault = config['DEFAULT']
 
-srcDirPath = configDefault['srcDirPath']
+srcDirPaths = json.loads(configDefault['srcDirPaths'])
 dstFilePath = configDefault['dstFilePath']
-filterTypes = configDefault['filterTypes']
+filterTypes = json.loads(configDefault['filterTypes'])
 
 clearFile(dstFilePath)
-readFilesInDirToOneFile(srcDirPath, dstFilePath, filterTypes)
+for srcDirPath in srcDirPaths:
+    readFilesInDirToOneFile(srcDirPath, dstFilePath, filterTypes)

@@ -1,5 +1,5 @@
-import configparser
 import os
+
 
 def readFile(filePath, encoding='utf-8'):
     with open(filePath, encoding=encoding) as file:
@@ -39,8 +39,10 @@ def readFilesInDirToOneFile(srcDir, dstFilePath, filterTypes):
         srcName = os.path.join(srcDir, name)
         if os.path.isdir(srcName):
             readFilesInDirToOneFile(srcName, dstFilePath, filterTypes)
-        elif os.path.isfile(srcName) and isFileTypeMatches(srcName, filterTypes):
-            print(srcName)
-            writeFile(dstFilePath, name)
-            writeFile(dstFilePath, readFile(srcName))
-            writeFile(dstFilePath, "")
+        elif os.path.isfile(srcName):
+            matches = isFileTypeMatches(srcName, filterTypes)
+            if matches:
+                print(srcName)
+                writeFile(dstFilePath, name)
+                writeFile(dstFilePath, readFile(srcName))
+                writeFile(dstFilePath, "")
