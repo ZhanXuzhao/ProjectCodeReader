@@ -1,0 +1,4 @@
+[DEFAULT]
+srcDirPath = E:\Workspace_Sumian\sd_doctor_android\app\src\main
+dstFilePath = code.txt
+filterTypes = ["xml", "java", "kt"]
